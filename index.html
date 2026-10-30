@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Fluency · Week 4 · Discernment Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#15375F; --navy2:#1E4E8C; --gold:#D4A017; --olive:#8B7536;
+  --bg:#EEF2F8; --card:#FFFFFF; --ink:#16263D; --muted:#55647A; --line:#C9D3E2;
+  --soft:#F3F6FB; --ok:#1F7A4A; --okbg:#E3F4EA; --bad:#B3261E; --badbg:#FBE7E5;
+  --onnavy:#FFFFFF;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1A2A; --card:#17253A; --ink:#E7EDF6; --muted:#A8B6CB; --line:#2E4260;
+    --soft:#1D2E47; --ok:#6FD39C; --okbg:#173A2A; --bad:#FF8A80; --badbg:#41201F;
+    --navy:#163A66; --navy2:#2A5FA5;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3","Segoe UI",Calibri,Arial,sans-serif;font-size:17px;line-height:1.55}
+a{color:var(--navy2)}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px 80px}
+
+/* Header */
+header.hero{background:var(--navy);color:var(--onnavy);border-left:10px solid var(--gold);border-bottom:8px solid var(--olive)}
+.hero-in{max-width:960px;margin:0 auto;padding:36px 22px 28px}
+.hero .course{color:var(--gold);font-weight:700;letter-spacing:.02em}
+.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:8px 0 10px;font-weight:800}
+.hero .focus{color:var(--gold);font-style:italic;font-size:19px;margin:0}
+.student{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.student label{font-size:14px;color:#D9E3F2;display:flex;flex-direction:column;gap:4px}
+.student input{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:6px;padding:8px 10px;font:inherit;min-width:220px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+/* Timeline */
+.timeline{display:grid;grid-template-columns:100fr 30fr 100fr;gap:4px;margin:24px 0 8px}
+.timeline a{display:block;text-decoration:none;padding:12px 14px;color:#fff;font-weight:700;border-radius:4px}
+.timeline small{display:block;font-weight:400;opacity:.9}
+.t1{background:var(--navy2)}.tb{background:#5C6F86;text-align:center}.t2{background:var(--olive)}
+.tl-note{font-size:14px;color:var(--muted);margin:0 0 6px}
+
+/* Sticky nav */
+nav.jump{position:sticky;top:0;z-index:20;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}
+nav.jump a{flex:none;font-size:14px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+nav.jump a.b2{border-color:var(--olive)}
+
+/* Block banners */
+.block{margin:36px 0 14px;padding:22px 24px;color:#fff;border-top:6px solid var(--gold)}
+.block.b1{background:var(--navy)}.block.b2{background:var(--olive);border-top-color:var(--navy)}
+.block h2{margin:2px 0 4px;font-size:30px;line-height:1.15}
+.block p{margin:0;opacity:.95}
+
+/* Activities */
+section.act{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--navy2);border-radius:4px;padding:22px 24px;margin:18px 0}
+section.act.b2{border-left-color:var(--olive)}
+section.act.handout{border-left-color:var(--gold);background:linear-gradient(var(--card),var(--card)) padding-box}
+.act-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.tag{font-size:14px;font-weight:700;color:var(--muted)}
+.act h3{margin:2px 0 6px;font-size:25px;line-height:1.2;color:var(--ink)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{font-size:13px;font-weight:600;background:var(--soft);border:1px solid var(--line);padding:3px 9px;border-radius:999px;color:var(--ink)}
+.howto{background:var(--soft);border-left:4px solid var(--gold);padding:12px 16px;margin:12px 0 16px;border-radius:0 4px 4px 0}
+.howto strong{display:block;margin-bottom:4px}
+.howto ol,.howto ul{margin:4px 0 0;padding-left:22px}
+.part{font-weight:700;font-size:18px;margin:20px 0 8px;color:var(--navy2)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .part{color:#8FB6EA}}
+.lang{font-size:15px;background:var(--soft);border:1px dashed var(--line);padding:10px 14px;border-radius:4px;margin:10px 0}
+.lang b{color:var(--olive)}
+
+/* Items */
+.item{padding:10px 12px;border:1px solid var(--line);border-radius:4px;margin:8px 0;background:var(--card)}
+.item.ok{border-color:var(--ok);background:var(--okbg)}
+.item.bad{border-color:var(--bad);background:var(--badbg)}
+.item .row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.item .row>span{flex:1 1 380px}
+.exp{display:none;font-size:15px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);color:var(--ink)}
+.checked .exp{display:block}
+.mc label{display:flex;gap:8px;align-items:flex-start;padding:4px 0;cursor:pointer}
+.mc input{margin-top:5px}
+select,input[type=text],textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:7px 9px}
+select{min-width:170px}
+textarea{width:100%;min-height:78px;resize:vertical;margin-top:4px}
+input[type=text]{width:100%}
+.inline input[type=text]{width:auto;min-width:200px}
+label.q{display:block;font-weight:600;margin:12px 0 2px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.btn{font:inherit;font-weight:700;font-size:15px;border:0;border-radius:4px;padding:9px 16px;cursor:pointer;background:var(--navy2);color:#fff}
+.btn.gold{background:var(--gold);color:#15375F}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.45)}
+.btn.timer{background:transparent;border:1px solid var(--line);color:var(--ink);font-size:13px;padding:4px 10px}
+.score{font-weight:700}
+
+/* Tables / grids */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (max-width:720px){.grid3,.grid2{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}}
+.typebox{border:1px solid var(--line);border-top:6px solid var(--navy);padding:12px 14px;background:var(--card)}
+.typebox.p2{border-top-color:var(--navy2)}.typebox.p3{border-top-color:var(--olive)}
+.typebox h4{margin:0 0 4px;font-size:19px}
+.typebox ul{margin:6px 0 0;padding-left:18px;font-size:15px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:#fff}
+.reading{background:var(--soft);border:1px solid var(--line);padding:14px 18px;border-radius:4px;font-size:17px;line-height:1.65}
+.reading p{margin:0 0 10px}
+.reading p:last-child{margin:0}
+.quote{background:var(--navy);color:#fff;padding:16px 20px;font-style:italic;font-weight:600;font-size:18px;border-radius:4px}
+.prompt{position:relative;background:#0F2440;color:#E8EEF7;font-family:Consolas,"Courier New",monospace;font-size:14.5px;padding:14px 16px;border-radius:4px;white-space:pre-wrap;margin:8px 0}
+.prompt .copy{position:absolute;top:8px;right:8px;font-family:"Source Sans 3",sans-serif}
+.brief{background:var(--card);border:1px solid var(--olive);border-radius:4px;padding:12px 16px;font-size:15px}
+.brief ul{margin:4px 0 0;padding-left:20px}
+.sample-title{font-size:20px;margin:24px 0 6px;color:var(--olive)}
+.sent{font-style:italic}
+.cycle{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.cycle .item{flex:1 1 180px;margin:0}
+.wc{font-size:13px;color:var(--muted)}
+.break{background:#5C6F86;color:#fff;text-align:center;padding:30px 20px;margin:36px 0;border-bottom:8px solid var(--gold)}
+.break h2{margin:0 0 6px;font-size:32px}
+.checklist label{display:flex;gap:8px;align-items:flex-start;padding:3px 0}
+.checklist input{margin-top:6px}
+.takeaways .item{border-left:6px solid var(--olive);font-weight:600}
+.rubric td:first-child{font-weight:600}
+.rubric input{transform:scale(1.2)}
+footer{text-align:center;color:var(--muted);font-size:14px;margin-top:40px}
+
+/* Floating timer */
+#timer{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;background:var(--navy);color:#fff;border:2px solid var(--gold);border-radius:8px;padding:10px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+#timer[hidden]{display:none}
+#timer .t{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums;min-width:76px;text-align:center}
+#timer.done{background:var(--bad)}
+#timer button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:4px;padding:3px 8px;cursor:pointer;font:inherit;font-size:13px}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+@media print{
+  body{background:#fff;font-size:13px}
+  nav.jump,.actions,.toolbar,#timer,.btn.timer,.copy{display:none!important}
+  section.act{break-inside:avoid-page;border-left-width:4px}
+  .exp{display:block}
+  header.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .block,.break,th,.quote,.prompt{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  textarea{min-height:60px;border:1px solid #999}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="course">AI Fluency · Week 4 · Student Workbook</div>
+    <h1>Discernment: Evaluating What AI Produces</h1>
+    <p class="focus">Marketing &amp; Media Focus</p>
+    <div class="student">
+      <label>Your name<input type="text" id="sname" placeholder="First and last name"></label>
+      <label>Date<input type="text" id="sdate" placeholder="e.g., Nov 3, 2026"></label>
+    </div>
+    <div class="toolbar">
+      <button class="btn gold" onclick="window.print()">Print / Save as PDF</button>
+      <button class="btn ghost" id="resetAll">Clear all my answers</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="timeline" aria-label="Class schedule">
+    <a class="t1" href="#block1">Block 1 · Discernment Foundations<small>0–100 min</small></a>
+    <a class="tb" href="#break">Break<small>100–130</small></a>
+    <a class="t2" href="#block2">Block 2 · Marketing &amp; Media + Workshop<small>130–230 min</small></a>
+  </div>
+  <p class="tl-note">Your answers save automatically in this browser. Use the ⏱ buttons to start an activity timer. Use “Check answers” to get instant feedback.</p>
+
+  <nav class="jump" aria-label="Jump to activity">
+    <a href="#a1">1 Warm-up</a><a href="#a2">2 Description vs Discernment</a><a href="#a3">3 Video</a><a href="#a4">4 Three types</a><a href="#a5">5 Hallucinations</a><a href="#a6">6 Error types</a><a href="#a7">7 Checklist</a><a href="#a8">8 The cycle</a><a href="#a9">9 Hands-on</a><a href="#a10">10 Discussion</a><a href="#a11">11 Vocab</a>
+    <a class="b2" href="#b1">12 Marketing</a><a class="b2" href="#b2">13 Sports Illustrated</a><a class="b2" href="#b3">14 Deepfakes</a><a class="b2" href="#b4">15 News</a><a class="b2" href="#b5">16 CNET</a><a class="b2" href="#b6">17 Responsibility</a><a class="b2" href="#b7">18 Workshop</a><a class="b2" href="#b8">19 Homework</a><a class="b2" href="#b9">20 Vocab</a><a class="b2" href="#b10">21 Wrap-up</a>
+  </nav>
+
+  <!-- ===================== BLOCK 1 ===================== -->
+  <div class="block b1" id="block1">
+    <div>Block 1 · 0–100 min</div>
+    <h2>Discernment: Reading AI Output Critically</h2>
+    <p>Concept → Video → 3 Types → Hands-On</p>
+  </div>
+
+  <!-- A1 -->
+  <section class="act" id="a1">
+    <div class="act-head">
+      <div><div class="tag">Activity 1 · Warm-up</div><h3>Before We Begin</h3></div>
+      <div class="meta"><span class="pill">👥 Pairs</span><button class="btn timer" data-min="4">⏱ 4 min</button></div>
+    </div>
+    <p><em>Last week, we learned how to ASK AI well. This week, we learn how to JUDGE its answers.</em></p>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li>Read the three questions below.</li><li>Tell your partner your answers. Your partner listens and asks one follow-up question.</li><li>Switch roles. Then write short notes about <u>your</u> answers.</li></ol>
+    </div>
+    <label class="q">1. Have you ever caught AI making a factual error? What was it?</label><textarea></textarea>
+    <label class="q">2. How did you notice it?</label><textarea></textarea>
+    <label class="q">3. What would have happened if you hadn’t noticed it?</label><textarea></textarea>
+    <div class="lang"><b>Useful language:</b> “I once asked AI about ___, and it told me ___, but actually ___.” · “I noticed because ___.” · “If I hadn’t checked, I would have ___.” · <em>Follow-up:</em> “What did you do after that?”</div>
+  </section>
+
+  <!-- A2 -->
+  <section class="act" id="a2">
+    <div class="act-head">
+      <div><div class="tag">Activity 2 · Key concept</div><h3>Description vs. Discernment</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="6">⏱ 6 min</button></div>
+    </div>
+    <div class="reading"><p><strong>Discernment</strong> is your ability to thoughtfully evaluate <em>what</em> AI produces, <em>how</em> it produces it, and <em>how it behaves</em>.</p>
+    <p>It is the flip side of <strong>Description</strong>. Description = communicating what you want clearly. Discernment = evaluating whether what you got actually meets your need. Even the smartest AI benefits from human judgment.</p></div>
+    <div class="howto"><strong>Instructions</strong>Read each action. Is the person using <b>Description</b> (before the AI answers) or <b>Discernment</b> (after the AI answers)? Choose from the menu, then click “Check answers.”</div>
+    <div class="cg" data-opts="Description|Discernment">
+      <div class="item"><div class="row"><span>a) Writing a clear prompt that includes a role, a task, and a format.</span><select data-ans="Description"></select></div><div class="exp">Description: you are explaining what you want before the AI writes.</div></div>
+      <div class="item"><div class="row"><span>b) Checking whether a statistic in the AI’s answer is real.</span><select data-ans="Discernment"></select></div><div class="exp">Discernment: you are evaluating the output for accuracy.</div></div>
+      <div class="item"><div class="row"><span>c) Telling the AI who the audience is before it writes.</span><select data-ans="Description"></select></div><div class="exp">Description: giving context up front.</div></div>
+      <div class="item"><div class="row"><span>d) Noticing that the AI ignored your 100-word limit.</span><select data-ans="Discernment"></select></div><div class="exp">Discernment: you compared the result with your request.</div></div>
+      <div class="item"><div class="row"><span>e) Asking yourself, “Does this actually answer my question?”</span><select data-ans="Discernment"></select></div><div class="exp">Discernment: this is the relevance check.</div></div>
+      <div class="item"><div class="row"><span>f) Giving the AI an example of the writing style you want.</span><select data-ans="Description"></select></div><div class="exp">Description: examples help the AI understand your request.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+  </section>
+
+  <!-- A3 -->
+  <section class="act" id="a3">
+    <div class="act-head">
+      <div><div class="tag">Activity 3 · Video + reflection</div><h3>Anthropic on Discernment</h3></div>
+      <div class="meta"><span class="pill">▶ Video 4 min</span><button class="btn timer" data-min="4">⏱ 4 min</button><span class="pill">👥 Pairs 4 min</span><button class="btn timer" data-min="4">⏱ 4 min</button></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li><b>Before you watch:</b> read Part A. Listen for the <b>3 types of Discernment</b>.</li>
+      <li><b>Watch</b> the video: <a href="https://www.youtube.com/watch?v=Y0KidGr9Z2Y" target="_blank" rel="noopener">youtube.com/watch?v=Y0KidGr9Z2Y</a></li>
+      <li><b>After you watch:</b> complete Part A and check. Then do Part B with a partner.</li></ol>
+    </div>
+    <div class="part">Part A · Listening check: match each type to its meaning</div>
+    <div class="cg" data-opts="Product|Process|Performance">
+      <div class="item"><div class="row"><span>“What you got” (the answer itself)</span><select data-ans="Product"></select></div><div class="exp">Product Discernment = evaluating the output.</div></div>
+      <div class="item"><div class="row"><span>“How AI got there” (the reasoning path)</span><select data-ans="Process"></select></div><div class="exp">Process Discernment = evaluating the reasoning.</div></div>
+      <div class="item"><div class="row"><span>“How AI behaved” (as a collaborator in the conversation)</span><select data-ans="Performance"></select></div><div class="exp">Performance Discernment = evaluating the AI’s behaviour.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <div class="part">Part B · Pair reflection: choose 2 of the 3 questions</div>
+    <label class="q">1. Which type of Discernment do you already do well, and which is new to you?</label><textarea></textarea>
+    <label class="q">2. Why does the video say Description and Discernment work “hand in hand”?</label><textarea></textarea>
+    <label class="q">3. What was one idea from the video that surprised you?</label><textarea></textarea>
+  </section>
+
+  <!-- A4 -->
+  <section class="act" id="a4">
+    <div class="act-head">
+      <div><div class="tag">Activity 4 · Core framework</div><h3>The 3 Types of Discernment</h3></div>
+      <div class="meta"><span class="pill">👤 Individual → 👥 Pairs</span><button class="btn timer" data-min="10">⏱ 10 min</button></div>
+    </div>
+    <div class="grid3">
+      <div class="typebox"><h4>Product</h4><em>What you got. Did it land?</em><ul><li><b>Accurate:</b> Are the facts correct?</li><li><b>Appropriate:</b> Does it fit the context and audience?</li><li><b>Coherent:</b> Does it make sense as a whole?</li><li><b>Relevant:</b> Does it answer what I asked?</li></ul></div>
+      <div class="typebox p2"><h4>Process</h4><em>How AI got there. Was the thinking sound?</em><ul><li><b>Logic gaps:</b> skipped steps or contradictions?</li><li><b>Attention misses:</b> ignored something I said?</li><li><b>Bad connections:</b> linked unrelated ideas?</li><li><b>Wrong frame:</b> solved a different problem?</li></ul></div>
+      <div class="typebox p3"><h4>Performance</h4><em>How AI behaved. Was it a good collaborator?</em><ul><li><b>Attentiveness:</b> did it listen, or repeat itself?</li><li><b>Tone fit:</b> too formal, casual, long, short?</li><li><b>Vocabulary:</b> correct terms for the topic?</li><li><b>Responsiveness:</b> did it adjust to feedback?</li></ul></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li>Read the 9 situations. Each one describes a problem with AI.</li>
+      <li>Decide: is this mainly a <b>Product</b>, <b>Process</b>, or <b>Performance</b> problem? Choose from the menu.</li>
+      <li>Check your answers. Then compare with a partner. Explain any answer you got wrong.</li></ol>
+      <p style="margin:8px 0 0"><b>Tip:</b> Problem in the <u>final text</u> → usually Product. Problem in the <u>reasoning steps</u> → Process. Problem in <u>how the AI acted across the conversation</u> (listening, adjusting, communicating) → Performance.</p>
+    </div>
+    <div class="cg" data-opts="Product|Process|Performance">
+      <div class="item"><div class="row"><span>1. The AI’s company summary says the business was founded in 1998. It was founded in 2008.</span><select data-ans="Product"></select></div><div class="exp">Product → <b>Accurate</b>. The final text contains a wrong fact.</div></div>
+      <div class="item"><div class="row"><span>2. You asked for a marketing plan for a small neighbourhood café. The AI wrote a plan for a national restaurant chain.</span><select data-ans="Process"></select></div><div class="exp">Process → <b>Wrong frame</b>. It solved a different problem from the one you asked.</div></div>
+      <div class="item"><div class="row"><span>3. You told the AI three times that its email was too formal. Every new version was just as formal.</span><select data-ans="Performance"></select></div><div class="exp">Performance → <b>Responsiveness</b>. It did not adjust to your feedback.</div></div>
+      <div class="item"><div class="row"><span>4. An email for teenage customers sounds like a legal contract.</span><select data-ans="Product"></select></div><div class="exp">Product → <b>Appropriate</b>. The final text does not fit the audience.</div></div>
+      <div class="item"><div class="row"><span>5. The AI says sales went up “because the logo is blue,” with no evidence that the colour changed anything.</span><select data-ans="Process"></select></div><div class="exp">Process → <b>Bad connection</b>. It linked two ideas that are not proven to be related.</div></div>
+      <div class="item"><div class="row"><span>6. After you corrected a date, the AI said sorry, then used the same wrong date again in its next reply.</span><select data-ans="Performance"></select></div><div class="exp">Performance → <b>Attentiveness</b>. It did not really listen during the conversation.</div></div>
+      <div class="item"><div class="row"><span>7. The finished ad includes a customer quote that no customer ever said.</span><select data-ans="Product"></select></div><div class="exp">Product → <b>Accurate</b>. The output contains invented information.</div></div>
+      <div class="item"><div class="row"><span>8. In step 2 the AI says the market is growing; in step 3 it says the market is shrinking, but it still recommends investing.</span><select data-ans="Process"></select></div><div class="exp">Process → <b>Logic gap</b>. The reasoning contradicts itself.</div></div>
+      <div class="item"><div class="row"><span>9. You asked a simple yes/no question in the chat, and the AI replied with 600 words and five headings.</span><select data-ans="Performance"></select></div><div class="exp">Performance → <b>Tone fit</b>. Its way of communicating with you was much too long.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <label class="q">Pair task: write ONE new example of your own for any type. Can your partner guess the type?</label><textarea placeholder="Example + type"></textarea>
+  </section>
+
+  <!-- A5 -->
+  <section class="act" id="a5">
+    <div class="act-head">
+      <div><div class="tag">Activity 5 · Key concept</div><h3>Why AI Hallucinates</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="8">⏱ 8 min</button></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>Read the short text. Then decide if each sentence is True or False, and answer the multiple-choice question. Check your answers.</div>
+    <div class="reading">
+      <p>Large language models (LLMs) do not “know” things in the way people do. They are <strong>probabilistic</strong>: they predict the next likely word, based on patterns in their training data. This is why AI can produce answers that sound fluent and confident but are completely wrong. <strong>Confidence does not equal correctness.</strong></p>
+      <p>When AI states something false or invented as if it were true, we call it a <strong>hallucination</strong>. Hallucinations are most common when the training data was thin or contradictory, when the question is very specific (names, dates, citations), and when the AI is asked to fill gaps it cannot actually verify. AI rarely says “I don’t know.” Spotting the problem is <em>your</em> job.</p>
+    </div>
+    <div class="cg" data-opts="True|False">
+      <div class="item"><div class="row"><span>1. LLMs look up each fact in a database before they answer.</span><select data-ans="False"></select></div><div class="exp">False. They predict likely words; they do not automatically check facts.</div></div>
+      <div class="item"><div class="row"><span>2. If an AI answer sounds very confident, it is probably correct.</span><select data-ans="False"></select></div><div class="exp">False. Confidence ≠ correctness.</div></div>
+      <div class="item"><div class="row"><span>3. Hallucinations are more likely when you ask for specific names, dates, or citations.</span><select data-ans="True"></select></div><div class="exp">True. Very specific details are a high-risk area.</div></div>
+      <div class="item"><div class="row"><span>4. AI usually tells you clearly when it does not know something.</span><select data-ans="False"></select></div><div class="exp">False. The text says AI rarely says “I don’t know.”</div></div>
+      <div class="item"><div class="row"><span>5. Thin or contradictory training data makes hallucinations more likely.</span><select data-ans="True"></select></div><div class="exp">True.</div></div>
+      <div class="item"><span><b>6. Which request is MOST likely to produce a hallucination?</b></span>
+        <div class="mc" data-ans="b">
+          <label><input type="radio" value="a"> Explain the difference between a slogan and a logo.</label>
+          <label><input type="radio" value="b"> List five academic articles, with authors and page numbers, about TikTok ads in Brazil in 2019.</label>
+          <label><input type="radio" value="c"> Give me three ideas for a bakery’s Instagram post.</label>
+        </div>
+        <div class="exp">b) It asks for very specific citations (names, page numbers) that the AI may not be able to verify, so it may invent them.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+  </section>
+
+  <!-- A6 -->
+  <section class="act" id="a6">
+    <div class="act-head">
+      <div><div class="tag">Activity 6 · Vocabulary focus</div><h3>5 Types of AI Errors</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="10">⏱ 10 min</button></div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Error type</th><th>What it means</th></tr>
+      <tr><td><b>Factual error</b></td><td>Wrong dates, names, statistics, or invented citations</td></tr>
+      <tr><td><b>Logical error</b></td><td>The reasoning contradicts itself or skips a step</td></tr>
+      <tr><td><b>Bias</b></td><td>One viewpoint or group is favoured; alternatives are erased</td></tr>
+      <tr><td><b>Tone mismatch</b></td><td>Too formal, too casual, or wrong for the audience</td></tr>
+      <tr><td><b>Omission</b></td><td>An important detail is silently left out</td></tr>
+    </table></div>
+    <div class="howto"><strong>Instructions</strong>Read each piece of AI output. Choose the error type that fits best. Then check. Remember: most weak AI output has 2 or more errors, so train your eye!</div>
+    <div class="cg" data-opts="Factual|Logical|Bias|Tone mismatch|Omission">
+      <div class="item"><div class="row"><span class="sent">1. “Instagram was launched in 2015 and quickly became popular with young people.”</span><select data-ans="Factual"></select></div><div class="exp">Factual. Instagram launched in 2010.</div></div>
+      <div class="item"><div class="row"><span class="sent">2. “Our prices are the lowest in the city. That is why our products cost more than our competitors’.”</span><select data-ans="Logical"></select></div><div class="exp">Logical. The second sentence contradicts the first.</div></div>
+      <div class="item"><div class="row"><span class="sent">3. A list called “Great Business Leaders to Learn From” that includes only men from one country.</span><select data-ans="Bias"></select></div><div class="exp">Bias. Other groups and regions are erased.</div></div>
+      <div class="item"><div class="row"><span class="sent">4. A reply to a customer who lost money: “Oopsie! Our bad 😅 Stuff happens!”</span><select data-ans="Tone mismatch"></select></div><div class="exp">Tone mismatch. Far too casual for a serious complaint.</div></div>
+      <div class="item"><div class="row"><span class="sent">5. A summary of a medicine ad that lists all the benefits but none of the side effects.</span><select data-ans="Omission"></select></div><div class="exp">Omission. Important safety information is silently left out.</div></div>
+      <div class="item"><div class="row"><span class="sent">6. “Studies show that 97% of customers prefer our brand.” (No study exists.)</span><select data-ans="Factual"></select></div><div class="exp">Factual. An invented statistic is a hallucination.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+  </section>
+
+  <!-- A7 Handout 1 -->
+  <section class="act handout" id="a7">
+    <div class="act-head">
+      <div><div class="tag">Handout #1 · Keep this open for the rest of class</div><h3>Discernment Checklist</h3></div>
+      <div class="meta"><span class="pill">👤 Read</span><button class="btn timer" data-min="5">⏱ 5 min</button></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>Read the checklist carefully. You will use it in Activity 9, the Workshop (Activity 18), and your homework. Tick the boxes when you use them on a real AI answer.</div>
+    <div class="grid3 checklist">
+      <div class="typebox"><h4>Product</h4>
+        <label><input type="checkbox"> Facts are correct (I checked them)</label>
+        <label><input type="checkbox"> Fits my audience and context</label>
+        <label><input type="checkbox"> Makes sense as a whole</label>
+        <label><input type="checkbox"> Answers what I actually asked</label></div>
+      <div class="typebox p2"><h4>Process</h4>
+        <label><input type="checkbox"> No skipped steps or contradictions</label>
+        <label><input type="checkbox"> Nothing I clearly said was ignored</label>
+        <label><input type="checkbox"> Ideas are connected logically</label>
+        <label><input type="checkbox"> It solved MY problem, not a different one</label></div>
+      <div class="typebox p3"><h4>Performance</h4>
+        <label><input type="checkbox"> It listened and didn’t repeat itself</label>
+        <label><input type="checkbox"> Length and tone were right</label>
+        <label><input type="checkbox"> Terminology was correct</label>
+        <label><input type="checkbox"> It adjusted when I gave feedback</label></div>
+    </div>
+    <div class="part">Scan for the 5 error types</div>
+    <div class="checklist grid2">
+      <label><input type="checkbox"> Factual: dates, names, numbers, sources</label>
+      <label><input type="checkbox"> Logical: contradictions, skipped steps</label>
+      <label><input type="checkbox"> Bias: one side or group only</label>
+      <label><input type="checkbox"> Tone mismatch: wrong for the reader</label>
+      <label><input type="checkbox"> Omission: something important missing</label>
+    </div>
+    <div class="part">When to accept, revise, or reject</div>
+    <div class="tbl"><table>
+      <tr><th>Decision</th><th>When</th></tr>
+      <tr><td><b>✅ Accept</b></td><td>All checks pass AND you have verified the important facts.</td></tr>
+      <tr><td><b>✏️ Revise</b></td><td>Small problems you can fix: tone, length, a minor omission, one wrong word.</td></tr>
+      <tr><td><b>❌ Reject / start again</b></td><td>Facts or sources can’t be verified · it answers a different question · invented quotes or citations · strong bias · errors in money, health, or legal information.</td></tr>
+    </table></div>
+  </section>
+
+  <!-- A8 -->
+  <section class="act" id="a8">
+    <div class="act-head">
+      <div><div class="tag">Activity 8 · Key concept</div><h3>Discernment Improves Description</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="5">⏱ 5 min</button></div>
+    </div>
+    <p>Every error you spot tells you something about your prompt. Discernment isn’t the END of the process. It’s how you LEARN to prompt better.</p>
+    <div class="howto"><strong>Instructions</strong>Part A: put the four steps of the cycle in the correct order (1–4). Part B: choose the best next prompt. Then check.</div>
+    <div class="cg" data-opts="1|2|3|4">
+      <div class="part">Part A · Order the cycle</div>
+      <div class="cycle">
+        <div class="item"><div class="row"><span><b>Discern</b>: evaluate the answer</span><select data-ans="3"></select></div><div class="exp">Step 3</div></div>
+        <div class="item"><div class="row"><span><b>Refine</b>: improve the prompt</span><select data-ans="4"></select></div><div class="exp">Step 4</div></div>
+        <div class="item"><div class="row"><span><b>Describe</b>: write the prompt</span><select data-ans="1"></select></div><div class="exp">Step 1</div></div>
+        <div class="item"><div class="row"><span><b>Generate</b>: AI creates output</span><select data-ans="2"></select></div><div class="exp">Step 2</div></div>
+      </div>
+      <div class="part">Part B · Use your Discernment</div>
+      <div class="item"><span>You notice the AI wrote for experts, but your readers are beginners. What is the best <b>refined</b> prompt?</span>
+        <div class="mc" data-ans="b">
+          <label><input type="radio" value="a"> “Write it again.”</label>
+          <label><input type="radio" value="b"> “My readers are complete beginners. Rewrite this in plain English and explain every technical term in one short sentence.”</label>
+          <label><input type="radio" value="c"> “Make it longer and more detailed.”</label>
+        </div>
+        <div class="exp">b) It names the exact problem you discerned (the audience) and tells the AI how to fix it. Each “Discern” sharpens the next “Describe.”</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+  </section>
+
+  <!-- A9 -->
+  <section class="act" id="a9">
+    <div class="act-head">
+      <div><div class="tag">Activity 9 · Hands-on with Claude</div><h3>Expert Discernment in Your Domain</h3></div>
+      <div class="meta"><span class="pill">👤 Individual 15 min</span><button class="btn timer" data-min="15">⏱ 15 min</button><span class="pill">👥 Pair share 4 min</span><button class="btn timer" data-min="4">⏱ 4 min</button></div>
+    </div>
+    <p><em>Use what YOU already know to evaluate what AI says. Keep Handout #1 open.</em></p>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li>Pick a topic you genuinely know well (a hobby, your job, your field of study). Choose ONE specific concept from it.</li>
+      <li>Copy the prompt below into Claude. Replace the [brackets].</li>
+      <li>Compare the three explanations. Find the strongest, the weakest, and any errors.</li>
+      <li>Tell Claude WHY one is best and ask it to fix the weakest (use the second prompt).</li>
+      <li>Share with a partner: What errors did you find? Did Claude fix them well?</li></ol>
+    </div>
+    <label class="q">My topic and concept:</label><input type="text" placeholder="e.g., Football → the offside rule">
+    <div class="part">Step 2 · Prompt to copy</div>
+    <div class="prompt"><button class="btn gold copy">Copy</button>I know a lot about [my topic]. Explain the concept of [concept] in three different ways. Label them A, B, and C.
+A: for a complete beginner, in about 80 words.
+B: using one real-world example, in about 80 words.
+C: in exactly 5 bullet points.</div>
+    <div class="part">Step 3 · Compare</div>
+    <div class="tbl"><table>
+      <tr><th>Explanation</th><th>Score (1–5)</th><th>Errors or problems I found (error type + layer)</th></tr>
+      <tr><td><b>A</b></td><td><select data-opts="1|2|3|4|5"></select></td><td><textarea placeholder="e.g., Factual error (Product): it says..."></textarea></td></tr>
+      <tr><td><b>B</b></td><td><select data-opts="1|2|3|4|5"></select></td><td><textarea></textarea></td></tr>
+      <tr><td><b>C</b></td><td><select data-opts="1|2|3|4|5"></select></td><td><textarea></textarea></td></tr>
+    </table></div>
+    <div class="part">Step 4 · Give feedback to Claude</div>
+    <div class="prompt"><button class="btn gold copy">Copy</button>Explanation [A/B/C] is the strongest because [reason]. Explanation [A/B/C] is the weakest because [reason]. Please rewrite the weakest one and fix these problems: [list the errors].</div>
+    <label class="q">Did Claude fix the problems? What changed? (Responsiveness = Performance)</label><textarea></textarea>
+    <div class="lang"><b>Pair share language:</b> “The strongest one was ___ because ___.” · “I caught a ___ error: it said ___, but actually ___.” · “When I gave feedback, Claude ___.”</div>
+  </section>
+
+  <!-- A10 -->
+  <section class="act" id="a10">
+    <div class="act-head">
+      <div><div class="tag">Activity 10 · Critical thinking</div><h3>Who Can Discern Without Expertise?</h3></div>
+      <div class="meta"><span class="pill">🎯 Whole class</span><button class="btn timer" data-min="6">⏱ 6 min</button></div>
+    </div>
+    <div class="quote">“You just compared three AI explanations in a topic you know well. You spotted the errors easily. Now imagine you DIDN’T know the topic. Would you still catch them?”</div>
+    <div class="howto"><strong>Instructions</strong>Think for 1 minute and write quick notes. Then discuss as a class. There is no single right answer: give reasons for your opinion.</div>
+    <label class="q">1. What does this say about students using AI for subjects they’re still learning?</label><textarea></textarea>
+    <label class="q">2. If you can’t discern, are you actually “using” AI, or just trusting it?</label><textarea></textarea>
+    <label class="q">3. What’s one thing you could do TODAY to discern better in topics you don’t know yet? Tick ideas you like, then add your own.</label>
+    <div class="checklist grid2">
+      <label><input type="checkbox"> Ask the AI for sources, then open and check them</label>
+      <label><input type="checkbox"> Compare with a trusted website or textbook</label>
+      <label><input type="checkbox"> Ask the AI to explain its reasoning step by step</label>
+      <label><input type="checkbox"> Do the numbers myself with a calculator</label>
+      <label><input type="checkbox"> Ask a teacher or expert to check key points</label>
+      <label><input type="checkbox"> Ask the same question twice and compare answers</label>
+    </div>
+    <textarea placeholder="My own idea..."></textarea>
+    <div class="lang"><b>Giving opinions:</b> “I’d argue that ___.” · “It depends on ___.” · “I partly agree, but ___.” · “A good example of this is ___.”</div>
+  </section>
+
+  <!-- A11 -->
+  <section class="act" id="a11">
+    <div class="act-head">
+      <div><div class="tag">Activity 11 · Vocabulary recap, Block 1</div><h3>Words to Take With You</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="6">⏱ 6 min</button></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>Complete each sentence with the correct term. Use each term once. Then check.</div>
+    <div class="cg" data-opts="Discernment|Product Discernment|Process Discernment|Performance Discernment|Hallucination">
+      <div class="item inline">1. The AI invented a book title and an author who don’t exist. This is a <select data-ans="Hallucination"></select>.<div class="exp">Hallucination: stating something false or made up with confidence.</div></div>
+      <div class="item inline">2. When I check whether the final text is accurate, appropriate, coherent, and relevant, I am using <select data-ans="Product Discernment"></select>.<div class="exp">Product Discernment evaluates the actual output.</div></div>
+      <div class="item inline">3. <select data-ans="Discernment"></select> means thoughtfully evaluating what AI produces, how, and how it behaves.<div class="exp">Discernment is the overall skill.</div></div>
+      <div class="item inline">4. The AI didn’t change anything after my feedback. I noticed this through <select data-ans="Performance Discernment"></select>.<div class="exp">Performance Discernment evaluates behaviour in the conversation.</div></div>
+      <div class="item inline">5. The AI jumped from “sales are low” to “fire the whole team” with no steps in between. I spotted this through <select data-ans="Process Discernment"></select>.<div class="exp">Process Discernment looks at gaps and contradictions in reasoning.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+  </section>
+
+  <!-- BREAK -->
+  <div class="break" id="break">
+    <div style="font-size:40px">☕</div>
+    <h2>30-Minute Break</h2>
+    <p>100 → 130 min. While you’re up, review your Discernment Checklist (Handout #1).<br>Next block: real cases from marketing and journalism.</p>
+  </div>
+
+  <!-- ===================== BLOCK 2 ===================== -->
+  <div class="block b2" id="block2">
+    <div>Block 2 · 130–230 min</div>
+    <h2>Discernment in the Real World: Marketing &amp; Media</h2>
+    <p>Real cases → Workshop → Homework brief</p>
+  </div>
+
+  <!-- B1 -->
+  <section class="act b2" id="b1">
+    <div class="act-head">
+      <div><div class="tag">Activity 12 · Industry: marketing</div><h3>AI in Marketing: A New Speed</h3></div>
+      <div class="meta"><span class="pill">👤 → 👥</span><button class="btn timer" data-min="8">⏱ 8 min</button></div>
+    </div>
+    <div class="grid2">
+      <div class="typebox p3"><h4>✍️ Content at scale</h4>Blogs, ads, emails produced in minutes</div>
+      <div class="typebox p3"><h4>🎯 Personalisation</h4>Different copy for different audiences</div>
+      <div class="typebox p3"><h4>🔍 SEO &amp; search</h4>Text optimised for both humans and search engines</div>
+      <div class="typebox p3"><h4>🎨 Synthetic media</h4>AI-generated images, voices, and video</div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>Part A: match each real situation to the AI use. Check. Part B: explain the warning in your own words, then compare with a partner.</div>
+    <div class="cg" data-opts="Content at scale|Personalisation|SEO & search|Synthetic media">
+      <div class="item"><div class="row"><span>1. A clothing brand sends one email to university students and a different email to retirees.</span><select data-ans="Personalisation"></select></div><div class="exp">Personalisation: different copy for different audiences.</div></div>
+      <div class="item"><div class="row"><span>2. An online shop writes 200 product descriptions in one afternoon.</span><select data-ans="Content at scale"></select></div><div class="exp">Content at scale.</div></div>
+      <div class="item"><div class="row"><span>3. A video ad uses an AI-generated voice instead of a voice actor.</span><select data-ans="Synthetic media"></select></div><div class="exp">Synthetic media.</div></div>
+      <div class="item"><div class="row"><span>4. A blog post is rewritten with keywords so it ranks higher on Google.</span><select data-ans="SEO & search"></select></div><div class="exp">SEO &amp; search.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <div class="part">Part B · The risk</div>
+    <div class="quote">“Speed without Discernment becomes scale without quality, and brand damage spreads just as fast.”</div>
+    <label class="q">What does this mean? Explain in your own words and give one example (2–3 sentences).</label><textarea></textarea>
+  </section>
+
+  <!-- B2 -->
+  <section class="act b2" id="b2">
+    <div class="act-head">
+      <div><div class="tag">Activity 13 · Cautionary case</div><h3>Sports Illustrated’s Fake Writers</h3></div>
+      <div class="meta"><span class="pill">👤 Read → 👥 Discuss</span><button class="btn timer" data-min="10">⏱ 10 min</button></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li>Check the key words before you read.</li><li>Read the text once for the main idea, then again for details.</li><li>Answer the questions and check. Discuss the last question with a partner.</li></ol>
+    </div>
+    <div class="lang"><b>Key words:</b> <b>byline</b> = the writer’s name on an article · <b>headshot</b> = a profile photo of someone’s face · <b>third party</b> = an outside company · <b>reputation</b> = what people think of a brand</div>
+    <div class="reading">
+      <p>In November 2023, the tech news site <em>Futurism</em> reported that <em>Sports Illustrated</em>, a famous American sports magazine first published in 1954, had published product-review articles under the bylines of writers who did not seem to exist. One “writer,” for example, had a headshot that was for sale on a website of AI-generated faces. His short biography was invented too. <em>Futurism</em> also said that some of the articles themselves read as if they had been written by AI.</p>
+      <p>The company that ran the magazine at the time said the reviews came from a third-party company and removed them. However, the story spread quickly across major news outlets, and within weeks the parent company’s CEO was fired. A reputation built over almost 70 years was damaged in a few weeks of headlines.</p>
+      <p>The lesson for publishers is clear: Discernment isn’t optional. If no human evaluates AI work before it is published, the brand pays the price.</p>
+    </div>
+    <div class="cg">
+      <div class="item"><span><b>1. Who first reported the problem?</b></span>
+        <div class="mc" data-ans="b"><label><input type="radio" value="a"> Sports Illustrated itself</label><label><input type="radio" value="b"> The news site Futurism</label><label><input type="radio" value="c"> A reader on social media</label></div>
+        <div class="exp">b) <em>Futurism</em> reported it in November 2023.</div></div>
+      <div class="item"><span><b>2. What was suspicious about one writer’s photo?</b></span>
+        <div class="mc" data-ans="c"><label><input type="radio" value="a"> It was a photo of a famous athlete.</label><label><input type="radio" value="b"> It was taken from another magazine.</label><label><input type="radio" value="c"> It was for sale on a website of AI-generated faces.</label></div>
+        <div class="exp">c) The face was AI-generated, so the person probably did not exist.</div></div>
+      <div class="item"><span><b>3. What did the company say?</b></span>
+        <div class="mc" data-ans="a"><label><input type="radio" value="a"> The reviews came from an outside company.</label><label><input type="radio" value="b"> The writers were real people.</label><label><input type="radio" value="c"> The articles were written by its own editors.</label></div>
+        <div class="exp">a) It blamed a third-party company and removed the articles.</div></div>
+      <div class="item"><div class="row"><span><b>4. Invented writer names, photos, and biographies are best described as which error type?</b></span><select data-ans="Factual" data-opts="Factual|Logical|Bias|Tone mismatch|Omission"></select></div>
+        <div class="exp">Factual: the information is made up (a hallucination presented as truth). You could also argue <b>Omission</b>: readers were not told AI was involved.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <label class="q">Discuss: Why do you think a 70-year reputation could be damaged so quickly? What should a human editor have checked?</label><textarea></textarea>
+  </section>
+
+  <!-- B3 -->
+  <section class="act b2" id="b3">
+    <div class="act-head">
+      <div><div class="tag">Activity 14 · Industry: synthetic media</div><h3>Deepfakes &amp; Synthetic Media</h3></div>
+      <div class="meta"><span class="pill">👤 Sort 5 min</span><button class="btn timer" data-min="5">⏱ 5 min</button><span class="pill">💭 Pair-share 3 min</span><button class="btn timer" data-min="3">⏱ 3 min</button></div>
+    </div>
+    <p><em>AI can now create convincing fake images, voices, and videos at any scale. The same technology can be used to help or to harm.</em></p>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li>Part A: decide if each use is <b>Legitimate</b> or <b>Harmful</b>. Check.</li><li>Part B: decide what you think about the grey-area case.</li><li>Part C: pair-share for 3 minutes.</li></ol>
+    </div>
+    <div class="cg" data-opts="Legitimate|Harmful">
+      <div class="item"><div class="row"><span>1. A film studio uses AI, with the actor’s permission, to make the actor look 30 years younger.</span><select data-ans="Legitimate"></select></div><div class="exp">Legitimate: film effects with consent.</div></div>
+      <div class="item"><div class="row"><span>2. A fake video of a politician saying something they never said is shared the week before an election.</span><select data-ans="Harmful"></select></div><div class="exp">Harmful: political disinformation.</div></div>
+      <div class="item"><div class="row"><span>3. A person who lost their voice to illness uses a cloned version of their own voice to speak.</span><select data-ans="Legitimate"></select></div><div class="exp">Legitimate: voice cloning for accessibility.</div></div>
+      <div class="item"><div class="row"><span>4. A scammer clones a CEO’s voice and calls the finance team to request an urgent money transfer.</span><select data-ans="Harmful"></select></div><div class="exp">Harmful: voice fraud (“CEO scam”).</div></div>
+      <div class="item"><div class="row"><span>5. A company translates a trainer’s video into Spanish with AI, and the trainer agreed to it.</span><select data-ans="Legitimate"></select></div><div class="exp">Legitimate: education and training content with permission.</div></div>
+      <div class="item"><div class="row"><span>6. Someone uses an AI-generated face and fake documents to open bank accounts.</span><select data-ans="Harmful"></select></div><div class="exp">Harmful: identity theft at scale.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <div class="part">Part B · Grey area</div>
+    <p>A fashion brand creates an AI “influencer.” She is not a real person, but the brand does not tell followers. She has 500,000 followers and promotes the brand’s clothes.</p>
+    <div class="item"><span><b>My opinion:</b></span>
+      <div class="mc" data-free="1"><label><input type="radio" value="l"> Legitimate</label><label><input type="radio" value="h"> Harmful</label><label><input type="radio" value="d"> It depends</label></div></div>
+    <label class="q">Because...</label><textarea></textarea>
+    <div class="part">Part C · Pair-share: How do you decide if a video you saw online is real?</div>
+    <div class="checklist grid2">
+      <label><input type="checkbox"> I check who posted it first (the original source).</label>
+      <label><input type="checkbox"> I look for the same story on trusted news sites.</label>
+      <label><input type="checkbox"> I look for strange details: hands, lips, shadows, voice.</label>
+      <label><input type="checkbox"> I ask: does this make me feel very angry or shocked? (A warning sign.)</label>
+    </div>
+    <textarea placeholder="My partner’s best idea was..."></textarea>
+  </section>
+
+  <!-- B4 -->
+  <section class="act b2" id="b4">
+    <div class="act-head">
+      <div><div class="tag">Activity 15 · Industry: media</div><h3>AI in News &amp; Journalism</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="5">⏱ 5 min</button></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>Match each example to how newsrooms use AI. Check. Then write a first answer to the editorial question. We will return to it in Activity 17.</div>
+    <div class="cg" data-opts="Article drafting|Data stories|Translation|Fact-checking">
+      <div class="item"><div class="row"><span>1. After every football match, a website automatically writes a short report from the score data.</span><select data-ans="Article drafting"></select></div><div class="exp">Article drafting: first drafts of routine news.</div></div>
+      <div class="item"><div class="row"><span>2. A news agency publishes the same story in 12 languages within minutes.</span><select data-ans="Translation"></select></div><div class="exp">Translation.</div></div>
+      <div class="item"><div class="row"><span>3. A tool checks whether a viral photo was made by AI.</span><select data-ans="Fact-checking"></select></div><div class="exp">Fact-checking: AI tools used to detect AI-generated content.</div></div>
+      <div class="item"><div class="row"><span>4. An election results map comes with charts and captions written automatically.</span><select data-ans="Data stories"></select></div><div class="exp">Data stories: auto-generated charts, summaries, captions.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <label class="q">The editorial question: Who is responsible when an AI-written article is wrong: the writer, the editor, or the publisher? (first thoughts)</label><textarea></textarea>
+  </section>
+
+  <!-- B5 -->
+  <section class="act b2" id="b5">
+    <div class="act-head">
+      <div><div class="tag">Activity 16 · Case study: media</div><h3>CNET’s Quiet AI Experiment</h3></div>
+      <div class="meta"><span class="pill">👤 Read → 👥 Discuss</span><button class="btn timer" data-min="10">⏱ 10 min</button></div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>Read the text. Answer the questions and check. Then write two rules that could have prevented the problem.</div>
+    <div class="reading">
+      <p>In January 2023, readers discovered that <em>CNET</em>, a well-known technology news website, had been quietly publishing personal-finance articles written mostly by an AI tool. The articles explained topics like credit cards, savings, and loans: real money decisions for real readers. They were signed “CNET Money Staff,” and readers were not clearly told that AI was involved.</p>
+      <p>After the news became public, <em>CNET</em> reviewed all 77 articles and found errors in 41 of them: more than half. One article said that if you put $10,000 in a savings account that earns 3% interest per year, you will earn $10,300 in the first year.</p>
+      <p><em>CNET</em> issued corrections, paused the program, and added clearer notes about how it uses AI.</p>
+    </div>
+    <div class="cg">
+      <div class="item"><span><b>1. Do the math yourself. With $10,000 at 3% per year, how much <u>interest</u> do you earn in the first year?</b></span>
+        <div class="mc" data-ans="a"><label><input type="radio" value="a"> $300</label><label><input type="radio" value="b"> $3,000</label><label><input type="radio" value="c"> $10,300</label></div>
+        <div class="exp">a) $300. The $10,300 is the <em>total balance</em>, not the interest earned. No human checked the math.</div></div>
+      <div class="item"><span><b>2. Why is personal finance a high-risk topic for AI errors?</b></span>
+        <div class="mc" data-ans="b"><label><input type="radio" value="a"> Because finance articles are usually very long.</label><label><input type="radio" value="b"> Because readers use the information to make real decisions about their money.</label><label><input type="radio" value="c"> Because AI cannot write about money.</label></div>
+        <div class="exp">b) Wrong information can cost readers real money.</div></div>
+      <div class="item"><div class="row"><span><b>3.</b> The wrong interest calculation is which error type?</span><select data-ans="Factual" data-opts="Factual|Logical|Bias|Tone mismatch|Omission"></select></div><div class="exp">Factual: the number is wrong. (Product Discernment was skipped.)</div></div>
+      <div class="item"><div class="row"><span><b>4.</b> Signing the articles “CNET Money Staff” without saying AI was involved is closest to which error type?</span><select data-ans="Omission" data-opts="Factual|Logical|Bias|Tone mismatch|Omission"></select></div><div class="exp">Omission: important information (that AI wrote the articles) was silently left out. Readers were told nothing.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <label class="q">Write two rules CNET should have had before publishing. Start each with “Every AI-assisted article must...”</label><textarea></textarea>
+  </section>
+
+  <!-- B6 -->
+  <section class="act b2" id="b6">
+    <div class="act-head">
+      <div><div class="tag">Activity 17 · Critical thinking</div><h3>Who Is Responsible?</h3></div>
+      <div class="meta"><span class="pill">👤 Prepare 2 min</span><button class="btn timer" data-min="2">⏱ 2 min</button><span class="pill">🎯 Whole class 6 min</span><button class="btn timer" data-min="6">⏱ 6 min</button></div>
+    </div>
+    <div class="quote">“An AI writes a financial article. A human editor publishes it. A reader makes a money decision based on it. The article was wrong. Who is responsible?”</div>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li>Read the three angles. Rank them: 1 = most responsible, 3 = least responsible.</li><li>Write your main argument using a sentence frame.</li><li>Share in the class discussion. Respond to at least one classmate politely. There is no single right answer.</li></ol>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Who</th><th>The angle</th><th>My rank</th></tr>
+      <tr><td><b>The AI</b></td><td>It produced the wrong information. Should it be “liable”?</td><td><select data-opts="1|2|3"></select></td></tr>
+      <tr><td><b>The editor</b></td><td>They signed off without verifying. Where does duty of care end?</td><td><select data-opts="1|2|3"></select></td></tr>
+      <tr><td><b>The publisher</b></td><td>They set up the workflow that made this possible. Are they ultimately on the hook?</td><td><select data-opts="1|2|3"></select></td></tr>
+    </table></div>
+    <label class="q">My argument:</label><textarea placeholder="In my view, the ___ is mainly responsible because..."></textarea>
+    <div class="lang"><b>Arguing:</b> “In my view, the ___ is mainly responsible because ___.” · <b>Disagreeing politely:</b> “I see your point, but ___.” / “That may be true; however, ___.” · <b>Key terms:</b> <em>liable</em> (legally responsible), <em>duty of care</em> (the responsibility to avoid harming others), <em>on the hook</em> (informal: responsible)</div>
+  </section>
+
+  <!-- B7 Workshop -->
+  <section class="act handout" id="b7">
+    <div class="act-head">
+      <div><div class="tag">Handout #2 · Workshop</div><h3>Find Every Error You Can</h3></div>
+      <div class="meta"><span class="pill">👤 Individual 15</span><button class="btn timer" data-min="15">⏱ 15 min</button><span class="pill">👥 Pairs 8</span><button class="btn timer" data-min="8">⏱ 8 min</button><span class="pill">🎯 Debrief 2</span><button class="btn timer" data-min="2">⏱ 2 min</button></div>
+    </div>
+    <p>Below are 3 AI-generated samples: marketing, news, and product copy. Each one comes with the <b>brief</b> (the true facts the AI was given). Each sample contains hidden errors: factual, logical, bias, tone, or omission.</p>
+    <div class="howto"><strong>Instructions</strong>
+      <ol><li><b>Read</b> each sample twice: once for content, once for errors. Compare it with the brief.</li>
+      <li><b>Flag</b> each sentence: choose “No error” or the error type.</li>
+      <li><b>Categorise:</b> use Handout #1. Is it a Product, Process, or Performance problem? (Explained after you check.)</li>
+      <li><b>Fix:</b> write a corrected version and explain WHY your version is better.</li>
+      <li>Compare with a partner before you click “Check answers.”</li></ol>
+    </div>
+
+    <!-- Sample 1 -->
+    <div class="sample-title">Sample 1 · Marketing email</div>
+    <div class="brief"><b>The brief:</b><ul>
+      <li>Product: BrewBox, a monthly coffee subscription. Price: $18/month.</li>
+      <li>Coffee from 3 countries: Colombia, Ethiopia, and Vietnam. Beans are roasted the week they ship.</li>
+      <li>Free trial: 14 days. After the trial, the customer’s card is charged automatically unless they cancel.</li>
+      <li>Audience: university students. Brand voice: friendly, relaxed, short sentences.</li></ul></div>
+    <div class="cg" data-opts="No error|Factual|Logical|Bias|Tone mismatch|Omission">
+      <div class="item"><div class="row"><span class="sent">1. “Dear Esteemed Scholar, we hereby wish to inform you of a distinguished opportunity in premium beverage acquisition.”</span><select data-ans="Tone mismatch"></select></div><div class="exp"><b>Tone mismatch</b> (Product: Appropriate). Far too formal for students and the friendly brand voice. Better: “Hey! Need better coffee for those late-night study sessions?”</div></div>
+      <div class="item"><div class="row"><span class="sent">2. “BrewBox delivers fresh coffee from Colombia, Ethiopia, and Brazil to your door every month.”</span><select data-ans="Factual"></select></div><div class="exp"><b>Factual</b> (Product: Accurate). The brief says Vietnam, not Brazil.</div></div>
+      <div class="item"><div class="row"><span class="sent">3. “For just $18 a month, you get beans roasted the week they ship.”</span><select data-ans="No error"></select></div><div class="exp"><b>No error.</b> Price and roasting match the brief.</div></div>
+      <div class="item"><div class="row"><span class="sent">4. “Try it free for 14 days, no strings attached!”</span><select data-ans="Omission"></select></div><div class="exp"><b>Omission</b> (Product: Accurate/Appropriate). It hides the automatic charge after the trial. “No strings attached” is misleading. Better: “Try it free for 14 days. Cancel anytime before day 14 and you won’t be charged.”</div></div>
+      <div class="item"><div class="row"><span class="sent">5. “Students who drink coffee get better grades, so BrewBox will raise your GPA.”</span><select data-ans="Logical"></select></div><div class="exp"><b>Logical</b> (Process: Bad connection). Coffee → better grades is not proven, and it jumps to a promise the brand can’t keep.</div></div>
+      <div class="item"><div class="row"><span class="sent">6. “Join today and taste the difference!”</span><select data-ans="No error"></select></div><div class="exp"><b>No error.</b> A friendly, normal call to action.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <label class="q">My corrected version of Sample 1:</label><textarea style="min-height:110px"></textarea>
+    <label class="q">Why my version is better:</label><textarea></textarea>
+
+    <!-- Sample 2 -->
+    <div class="sample-title">Sample 2 · Local news brief</div>
+    <div class="brief"><b>The brief:</b><ul>
+      <li>On Tuesday, the city council voted 6–3 to approve a new bike lane on Main Street.</li>
+      <li>Cost: $2.4 million. Construction starts in March.</li>
+      <li>The local cycling group supported it: they said it would make the street safer.</li>
+      <li>Several shop owners spoke against it at the meeting: they are worried about losing parking spaces.</li>
+      <li>Format: neutral, professional news style.</li></ul></div>
+    <div class="cg" data-opts="No error|Factual|Logical|Bias|Tone mismatch|Omission">
+      <div class="item"><div class="row"><span class="sent">1. “On Tuesday, the city council voted 6–3 to approve a new bike lane on Main Street.”</span><select data-ans="No error"></select></div><div class="exp"><b>No error.</b></div></div>
+      <div class="item"><div class="row"><span class="sent">2. “The project will cost $4.2 million, and construction begins in March.”</span><select data-ans="Factual"></select></div><div class="exp"><b>Factual</b> (Product: Accurate). The cost is $2.4 million. The numbers were switched, a very common AI error.</div></div>
+      <div class="item"><div class="row"><span class="sent">3. “Every resident celebrated the decision, which will finally fix the city’s traffic problems.”</span><select data-ans="Bias"></select></div><div class="exp"><b>Bias</b> (Product: Appropriate). It erases the shop owners who opposed it and presents one side as everyone’s view. It also overclaims (“fix traffic”).</div></div>
+      <div class="item"><div class="row"><span class="sent">4. “Because the vote was not unanimous, the bike lane will probably never be built.”</span><select data-ans="Logical"></select></div><div class="exp"><b>Logical</b> (Process: Logic gap). A 6–3 vote still approves the project; the conclusion doesn’t follow.</div></div>
+      <div class="item"><div class="row"><span class="sent">5. “Members of the local cycling group said the lane would make the street safer for riders.”</span><select data-ans="No error"></select></div><div class="exp"><b>No error.</b> Matches the brief.</div></div>
+      <div class="item"><div class="row"><span class="sent">6. “OMG, Main Street is about to get SO much cooler, people!! 🚲🔥”</span><select data-ans="Tone mismatch"></select></div><div class="exp"><b>Tone mismatch</b> (Product: Appropriate). Social-media style is wrong for a neutral news brief.</div></div>
+      <div class="item"><span><b>What important fact from the brief is missing from Sample 2?</b></span>
+        <div class="mc" data-ans="c"><label><input type="radio" value="a"> The day of the vote</label><label><input type="radio" value="b"> The start of construction</label><label><input type="radio" value="c"> The shop owners’ concerns about parking</label></div>
+        <div class="exp">c) <b>Omission.</b> Fair news reporting includes both sides.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <label class="q">My corrected version of Sample 2:</label><textarea style="min-height:110px"></textarea>
+    <label class="q">Why my version is better:</label><textarea></textarea>
+
+    <!-- Sample 3 -->
+    <div class="sample-title">Sample 3 · Online store product copy</div>
+    <div class="brief"><b>The brief:</b><ul>
+      <li>Product: AquaPure water bottle, 750 ml, stainless steel. Price: $29.</li>
+      <li>Keeps drinks cold for 24 hours and hot for 12 hours.</li>
+      <li>Hand wash only: NOT dishwasher safe.</li>
+      <li>Audience: office workers and gym-goers of all genders. Voice: energetic but clear.</li></ul></div>
+    <div class="cg" data-opts="No error|Factual|Logical|Bias|Tone mismatch|Omission">
+      <div class="item"><div class="row"><span class="sent">1. “The AquaPure bottle holds 750 ml and is made of stainless steel.”</span><select data-ans="No error"></select></div><div class="exp"><b>No error.</b></div></div>
+      <div class="item"><div class="row"><span class="sent">2. “It keeps your drinks cold for 24 hours and hot for 24 hours.”</span><select data-ans="Factual"></select></div><div class="exp"><b>Factual</b> (Product: Accurate). Hot = 12 hours. A false product claim can lead to complaints and refunds.</div></div>
+      <div class="item"><div class="row"><span class="sent">3. “Perfect for the busy businessman and the gym guy who never stops.”</span><select data-ans="Bias"></select></div><div class="exp"><b>Bias</b> (Product: Appropriate). Only men are mentioned; the audience is all genders. Better: “Perfect for busy professionals and anyone who never skips leg day.”</div></div>
+      <div class="item"><div class="row"><span class="sent">4. “Because it’s made of steel, it’s the most eco-friendly bottle in the world.”</span><select data-ans="Logical"></select></div><div class="exp"><b>Logical</b> (Process: Bad connection). Being steel does not prove it is “the most eco-friendly in the world.” It is also an unverifiable claim.</div></div>
+      <div class="item"><div class="row"><span class="sent">5. “Grab yours today for just $29!”</span><select data-ans="No error"></select></div><div class="exp"><b>No error.</b></div></div>
+      <div class="item"><span><b>What important fact from the brief is missing from Sample 3?</b></span>
+        <div class="mc" data-ans="b"><label><input type="radio" value="a"> The price</label><label><input type="radio" value="b"> Hand wash only / not dishwasher safe</label><label><input type="radio" value="c"> The size</label></div>
+        <div class="exp">b) <b>Omission.</b> Customers who put it in the dishwasher could damage it, and then blame the brand.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+    <label class="q">My corrected version of Sample 3:</label><textarea style="min-height:110px"></textarea>
+    <label class="q">Why my version is better:</label><textarea></textarea>
+
+    <!-- Rubric -->
+    <div class="part">Self-evaluation rubric</div>
+    <div class="howto"><strong>Instructions</strong>Be honest. Click one score for each skill. Your total appears below.</div>
+    <div class="tbl"><table class="rubric" id="rubric">
+      <tr><th>Skill</th><th>1 · Beginning</th><th>2 · Developing</th><th>3 · Good</th><th>4 · Excellent</th></tr>
+      <tr><td>Finding errors</td><td><label><input type="radio" name="rub1" value="1"> Found a few</label></td><td><label><input type="radio" name="rub1" value="2"> Found about half</label></td><td><label><input type="radio" name="rub1" value="3"> Found most</label></td><td><label><input type="radio" name="rub1" value="4"> Found almost all</label></td></tr>
+      <tr><td>Labelling error types</td><td><label><input type="radio" name="rub2" value="1"> Mostly guessed</label></td><td><label><input type="radio" name="rub2" value="2"> Some correct</label></td><td><label><input type="radio" name="rub2" value="3"> Most correct</label></td><td><label><input type="radio" name="rub2" value="4"> All correct + layer</label></td></tr>
+      <tr><td>Corrected versions</td><td><label><input type="radio" name="rub3" value="1"> Not finished</label></td><td><label><input type="radio" name="rub3" value="2"> Fixed some errors</label></td><td><label><input type="radio" name="rub3" value="3"> Fixed most errors</label></td><td><label><input type="radio" name="rub3" value="4"> All fixed, right tone</label></td></tr>
+      <tr><td>Explaining WHY</td><td><label><input type="radio" name="rub4" value="1"> No reasons</label></td><td><label><input type="radio" name="rub4" value="2"> General reasons</label></td><td><label><input type="radio" name="rub4" value="3"> Clear reasons</label></td><td><label><input type="radio" name="rub4" value="4"> Specific, with evidence</label></td></tr>
+    </table></div>
+    <p><b>My total: <span id="rubTotal">–</span> / 16</b></p>
+  </section>
+
+  <!-- B8 Homework -->
+  <section class="act handout" id="b8">
+    <div class="act-head">
+      <div><div class="tag">Handout #3 · Homework</div><h3>AI Task 4: Take-Home Brief</h3></div>
+      <div class="meta"><span class="pill">📅 Due next class, with Journal Entry 4</span><button class="btn timer" data-min="5">⏱ 5 min planning</button></div>
+    </div>
+    <div class="reading"><p><b>The task:</b> Use AI to produce one piece of content for your professional life. Then apply the Discernment Checklist (Handout #1).</p></div>
+    <div class="howto"><strong>What to submit</strong>
+      <ol><li>The original AI-generated content (copy and paste it exactly).</li>
+      <li>Your annotated version: show what you <b>corrected</b>, <b>verified</b>, or <b>rejected</b>, and label each error type.</li>
+      <li>A 150-word reflection: What surprised you?</li></ol>
+    </div>
+    <div class="part">Plan it now (5 min)</div>
+    <label class="q">What content will you create? (ideas: LinkedIn post, cover letter, product description, email to a client, short report, presentation outline)</label><input type="text">
+    <label class="q">Who is the audience?</label><input type="text">
+    <label class="q">My first prompt (use what you learned last week about clear Description):</label><textarea></textarea>
+    <div class="part">Annotation code (use it in your annotated version)</div>
+    <div class="tbl"><table>
+      <tr><th>Mark</th><th>Meaning</th></tr>
+      <tr><td>✔ V</td><td><b>Verified</b>: I checked this and it is correct (write your source).</td></tr>
+      <tr><td>✏ C</td><td><b>Corrected</b>: I changed this (write the error type: F / L / B / T / O).</td></tr>
+      <tr><td>✖ R</td><td><b>Rejected</b>: I deleted this (explain why).</td></tr>
+    </table></div>
+    <div class="part">Draft your reflection here (target: 150 words)</div>
+    <p style="font-size:15px;color:var(--muted);margin:0">Guiding questions: Which error types did you find? Which was hardest to notice? Did the AI sound confident when it was wrong? What will you change in your next prompt?</p>
+    <textarea data-wc="150" style="min-height:160px"></textarea><div class="wc">0 / 150 words</div>
+    <div class="part">Before you submit</div>
+    <div class="checklist">
+      <label><input type="checkbox"> I included the original AI content.</label>
+      <label><input type="checkbox"> I marked every change as V, C, or R.</label>
+      <label><input type="checkbox"> I labelled each error type.</label>
+      <label><input type="checkbox"> My reflection is about 150 words.</label>
+      <label><input type="checkbox"> I will submit it with Journal Entry 4.</label>
+    </div>
+  </section>
+
+  <!-- B9 -->
+  <section class="act b2" id="b9">
+    <div class="act-head">
+      <div><div class="tag">Activity 20 · Vocabulary recap, Block 2</div><h3>Industry &amp; Workshop Terms</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="6">⏱ 6 min</button></div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td><b>Brand voice drift</b></td><td>When AI-generated content slowly stops sounding like the brand it represents</td></tr>
+      <tr><td><b>Synthetic media</b></td><td>AI-created images, audio, or video, including deepfakes</td></tr>
+      <tr><td><b>Editorial responsibility</b></td><td>Who is accountable for the truth and quality of published content</td></tr>
+      <tr><td><b>Bias</b></td><td>When AI consistently favours one viewpoint, group, or framing</td></tr>
+      <tr><td><b>Omission</b></td><td>When important information is silently left out of an AI response</td></tr>
+    </table></div>
+    <div class="howto"><strong>Instructions</strong>Complete each sentence with the correct term. Use each term once. Then check.</div>
+    <div class="cg" data-opts="brand voice drift|synthetic media|editorial responsibility|bias|omission">
+      <div class="item inline">1. After six months of AI-written posts, our fun, playful brand started to sound like a bank. This is <select data-ans="brand voice drift"></select>.<div class="exp">Brand voice drift.</div></div>
+      <div class="item inline">2. The newspaper accepted <select data-ans="editorial responsibility"></select> for the error and published a correction.<div class="exp">Editorial responsibility: being accountable for what is published.</div></div>
+      <div class="item inline">3. An AI-generated video of a celebrity selling a product is an example of <select data-ans="synthetic media"></select>.<div class="exp">Synthetic media.</div></div>
+      <div class="item inline">4. The summary didn’t mention the cancellation fee. That’s a serious <select data-ans="omission"></select>.<div class="exp">Omission.</div></div>
+      <div class="item inline">5. The AI described every engineer as “he” and every nurse as “she.” This shows gender <select data-ans="bias"></select>.<div class="exp">Bias.</div></div>
+      <div class="actions"><button class="btn check">Check answers</button><button class="btn ghost clear">Try again</button><span class="score"></span></div>
+    </div>
+  </section>
+
+  <!-- B10 -->
+  <section class="act b2" id="b10">
+    <div class="act-head">
+      <div><div class="tag">Activity 21 · Class wrap-up</div><h3>3 Key Takeaways &amp; Final Reflection</h3></div>
+      <div class="meta"><span class="pill">👤 Individual</span><button class="btn timer" data-min="6">⏱ 6 min</button></div>
+    </div>
+    <div class="takeaways">
+      <div class="item">1. Discernment has 3 layers: Product (what), Process (how), Performance (manner).</div>
+      <div class="item">2. AI sounds confident even when it’s wrong. Confidence ≠ correctness.</div>
+      <div class="item">3. Without Discernment, speed becomes a scale of mistakes. Slow down to verify.</div>
+    </div>
+    <div class="howto"><strong>Instructions</strong>Answer the main question OR complete both sentence starters. Share one idea with the class if your teacher asks.</div>
+    <label class="q">What’s one piece of AI-generated content you’ve trusted recently, and what would you check differently after today?</label><textarea></textarea>
+    <p style="margin:14px 0 4px"><b>Or finish these:</b></p>
+    <div class="item inline">✏️ The error type I’m most likely to miss is <select data-opts="a factual error|a logical error|bias|a tone mismatch|an omission"></select> because <input type="text" placeholder="...">.</div>
+    <div class="item inline">✏️ One thing I’ll always verify from now on is <input type="text" placeholder="...">.</div>
+    <p style="text-align:center;font-style:italic;margin-top:18px">See you next week. Keep your Discernment sharp.</p>
+  </section>
+
+  <footer>Approach International Student Center® · AI Fluency · Week 4 · B2</footer>
+</div>
+
+<div id="timer" hidden role="timer" aria-live="polite">
+  <span class="t" id="timerTxt">0:00</span>
+  <button id="timerPause">Pause</button>
+  <button id="timerClose">Close</button>
+</div>
+
+<script>
+(function(){
+  var KEY = 'aif-week4-discernment-v1';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { store = {}; }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){} }
+
+  // Build select options
+  document.querySelectorAll('select').forEach(function(s){
+    var holder = s.hasAttribute('data-opts') ? s : s.closest('[data-opts]');
+    if(!holder) return;
+    var opts = holder.getAttribute('data-opts').split('|');
+    var first = document.createElement('option'); first.value=''; first.textContent='— choose —'; s.appendChild(first);
+    opts.forEach(function(o){ var op=document.createElement('option'); op.value=o; op.textContent=o; s.appendChild(op); });
+  });
+
+  // Name radio groups
+  var mcCount = 0;
+  document.querySelectorAll('.mc').forEach(function(mc){
+    var n = 'mc' + (mcCount++);
+    mc.querySelectorAll('input[type=radio]').forEach(function(r){ r.name = n; });
+  });
+
+  // Autosave
+  var fields = document.querySelectorAll('textarea, input[type=text], select, input[type=checkbox]');
+  fields.forEach(function(el, i){
+    var k = el.id || ('f' + i);
+    if(store[k] !== undefined){ if(el.type==='checkbox') el.checked = !!store[k]; else el.value = store[k]; }
+    var ev = (el.tagName==='SELECT' || el.type==='checkbox') ? 'change' : 'input';
+    el.addEventListener(ev, function(){ store[k] = el.type==='checkbox' ? el.checked : el.value; save(); });
+  });
+  document.querySelectorAll('input[type=radio]').forEach(function(r){
+    if(store['r_'+r.name] === r.value) r.checked = true;
+    r.addEventListener('change', function(){ store['r_'+r.name] = r.value; save(); updateRubric(); });
+  });
+
+  // Check answers
+  function checkGroup(cg){
+    var total=0, right=0;
+    cg.querySelectorAll('.item').forEach(function(item){
+      var sel = item.querySelector('select[data-ans]');
+      var mc = item.querySelector('.mc[data-ans]');
+      if(!sel && !mc) return;
+      total++;
+      var ok;
+      if(sel){ ok = sel.value === sel.getAttribute('data-ans'); }
+      else { var c = mc.querySelector('input:checked'); ok = !!c && c.value === mc.getAttribute('data-ans'); }
+      item.classList.remove('ok','bad');
+      item.classList.add(ok ? 'ok' : 'bad', 'checked');
+      if(ok) right++;
+    });
+    var sc = cg.querySelector('.score');
+    if(sc) sc.textContent = 'Score: ' + right + ' / ' + total + (right===total ? ' 🎉' : '');
+  }
+  function clearGroup(cg){
+    cg.querySelectorAll('.item').forEach(function(item){
+      item.classList.remove('ok','bad','checked');
+      var sel = item.querySelector('select[data-ans]');
+      if(sel){ sel.value=''; sel.dispatchEvent(new Event('change')); }
+      item.querySelectorAll('.mc[data-ans] input').forEach(function(r){ if(r.checked){ r.checked=false; delete store['r_'+r.name]; } });
+    });
+    save();
+    var sc = cg.querySelector('.score'); if(sc) sc.textContent='';
+  }
+  document.querySelectorAll('.check').forEach(function(b){ b.addEventListener('click', function(){ checkGroup(b.closest('.cg')); }); });
+  document.querySelectorAll('.clear').forEach(function(b){ b.addEventListener('click', function(){ clearGroup(b.closest('.cg')); }); });
+
+  // Rubric
+  function updateRubric(){
+    var t=0, n=0;
+    for(var i=1;i<=4;i++){ var c=document.querySelector('input[name=rub'+i+']:checked'); if(c){ t+=+c.value; n++; } }
+    document.getElementById('rubTotal').textContent = n ? t : '–';
+  }
+  updateRubric();
+
+  // Word count
+  document.querySelectorAll('textarea[data-wc]').forEach(function(ta){
+    var out = ta.nextElementSibling, target = ta.getAttribute('data-wc');
+    function wc(){ var w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; out.textContent = w + ' / ' + target + ' words'; }
+    ta.addEventListener('input', wc); wc();
+  });
+
+  // Copy prompts
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click', function(){
+      var text = b.parentElement.textContent.replace(b.textContent,'').trim();
+      var done = function(){ b.textContent='Copied!'; setTimeout(function(){ b.textContent='Copy'; },1500); };
+      if(navigator.clipboard){ navigator.clipboard.writeText(text).then(done, function(){}); }
+      else { var t=document.createElement('textarea'); t.value=text; document.body.appendChild(t); t.select(); try{document.execCommand('copy');done();}catch(e){} t.remove(); }
+    });
+  });
+
+  // Reset all
+  document.getElementById('resetAll').addEventListener('click', function(){
+    if(!confirm('Clear ALL your answers in this workbook? This cannot be undone.')) return;
+    try { localStorage.removeItem(KEY); } catch(e){}
+    location.reload();
+  });
+
+  // Timer
+  var box=document.getElementById('timer'), txt=document.getElementById('timerTxt'), pauseBtn=document.getElementById('timerPause');
+  var remaining=0, endAt=0, iv=null, paused=false;
+  function render(s){ txt.textContent = Math.floor(s/60) + ':' + String(s%60).padStart(2,'0'); }
+  function tick(){
+    var s = Math.max(0, Math.round((endAt - Date.now())/1000));
+    render(s);
+    if(s<=0){ clearInterval(iv); box.classList.add('done'); txt.textContent="Time!"; }
+  }
+  function start(min){
+    clearInterval(iv); box.hidden=false; box.classList.remove('done'); paused=false; pauseBtn.textContent='Pause';
+    endAt = Date.now() + min*60000; tick(); iv=setInterval(tick, 250);
+  }
+  document.querySelectorAll('.btn.timer').forEach(function(b){ b.addEventListener('click', function(){ start(+b.getAttribute('data-min')); }); });
+  pauseBtn.addEventListener('click', function(){
+    if(!paused){ remaining = endAt - Date.now(); clearInterval(iv); paused=true; pauseBtn.textContent='Resume'; }
+    else { endAt = Date.now() + remaining; iv=setInterval(tick,250); paused=false; pauseBtn.textContent='Pause'; }
+  });
+  document.getElementById('timerClose').addEventListener('click', function(){ clearInterval(iv); box.hidden=true; });
+})();
+</script>
+</body>
+</html>
